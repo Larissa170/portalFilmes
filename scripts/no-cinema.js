@@ -11,15 +11,22 @@ window.addEventListener("DOMContentLoaded", () => {
       let str = "";
       str += `<h2 class="text-center my-3"> No Cinema</h2>`;
       for (x = 0; x < data.results.length; x++) {
+        let lancamento = new Date(data.results[x].release_date);
         str += `
         <div class="col-sm-4 mb-2">
-          <div class="card style="width: 18rem;">
+          <div class="card bg-dark text-white style="width: 18rem;">
               <div class="card-body">
-                <h5 class="card-title text-center ">${data.results[x].original_title}</h5>
-                <img src="${IMGS}${data.results[x].poster_path}" alt="Poster Filme" class="card-img-top mb-1"/>
-                <p> Sinopse: ${data.results[x].overview}</p>
-                <p>Lançamento: ${data.results[x].release_date}</p>                
-                <a class="btn btn-light" href="detalhes.html?id=${data.results[x].id}" target="_blank">Detalhes</a> 
+                <h5 class="card-title text-center ">${
+                  data.results[x].original_title
+                }</h5>
+                <img src="${IMGS}${
+          data.results[x].poster_path
+        }" alt="Poster Filme" class="card-img-top mb-1"/>
+                <p><span>Sinopse: </span> ${data.results[x].overview}</p>
+                <p><span>Lançamento: </span> ${lancamento.toLocaleDateString()}</p>                
+                <a class="btn btn-light" href="detalhes.html?id=${
+                  data.results[x].id
+                }" target="_blank">Detalhes</a> 
               </div>
             </div>
         </div>`;
@@ -43,15 +50,22 @@ elem.addEventListener("click", () => {
       let str = "";
       str += `<h2 class="my-3"> Filmes encontrados </h2>`;
       for (x = 0; x < data.results.length; x++) {
+        let lancamento = new Date(data.results[x].release_date);
         str += `
         <div class="col-sm-4 mb-2">
-          <div class="card style="width: 18rem;">
+          <div class="card bg-dark text-white style="width: 18rem;">
               <div class="card-body">
-                <h5 class="card-title text-center ">${data.results[x].original_title}</h5>
-                <img src="${IMGS}${data.results[x].poster_path}" alt="Poster Filme" class="card-img-top mb-1"/>
-                <p> Sinopse: ${data.results[x].overview}</p>
-                <p>Lançamento: ${data.results[x].release_date}</p>                
-                <a class="btn btn-light" href="detalhes.html?id=${data.results[x].id}" target="_blank">Detalhes</a> 
+                <h5 class="card-title text-center ">${
+                  data.results[x].original_title
+                }</h5>
+                <img src="${IMGS}${
+          data.results[x].poster_path
+        }" alt="Poster Filme" class="card-img-top mb-1"/>
+                <p><span>Sinopse: </span> ${data.results[x].overview}</p>
+                <p><span>Lançamento: </span> ${lancamento.toLocaleDateString()}</p>                
+                <a class="btn btn-light" href="detalhes.html?id=${
+                  data.results[x].id
+                }" target="_blank">Detalhes</a> 
               </div>
             </div>
         </div>`;

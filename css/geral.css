@@ -5,4 +5,19 @@
 
 body {
   font-family: 'Raleway', sans-serif;
+  background-image: linear-gradient(rgb(253, 2, 2), rgb(238, 215, 12));
+}
+
+h2, h5 ,h4 {
+  color:aliceblue;
+  font-weight: bold;
+}
+
+p > span {
+  font-weight: bold;
+}
+
+.detalhe-filme {
+  background-color: rgba(253, 245, 245, 0.229);
+  font-size: 1.3rem;
 }
