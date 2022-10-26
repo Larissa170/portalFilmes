@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/geral.css">
+  <link rel="icon" href="imgs/popcorn_cinema_icon.png" type="image/png">
+  <title>LissaFlix</title>
+</head>
+<body>
+  <nav class="navbar navbar-expand-xxl navbar-dark bg-dark">
+    <div class="container-fluid">
+      <div class="d-flex">
+        <button class="navbar-toggler me-3" type="button" data-bs-toggle="collapse" data-bs-target="#navCabecalho" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand d-flex align-items-center" href="#">
+          <img src="imgs/popcorn_cinema_icon.png" class="img-brand me-2" alt="filmes">
+          LissaFlix
+        </a>
+      </div>        
+      <div class="collapse navbar-collapse" id="navCabecalho">
+        <ul class="navbar-nav mb-2 mb-xxl-0">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Filmes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Series</a>
+          </li>
+        </ul>
+      </div>
+      <div class="my-2 my-xxl-0" style="display: inline-block;">
+        <div class="input-group">          
+          <input id="buscar" class="form-control" type="text" placeholder="Pesquisar filmes" aria-label="Pesquisar">
+          <button id="btn-pesquisa" class="btn btn-secondary"><i class="bi bi-search"></i></button> 
+        </div>
+      </div>
+    </div>
+  </nav>
+  <main class="container-fluid my-2">   
+    <section class="container">
+      <div class="row" id="filmes-no-cinema"></div>
+    </section>
+  </main>
+  <script src="scripts/no-cinema.js"></script>
+</body>
+</html>
