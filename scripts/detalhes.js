@@ -11,9 +11,7 @@ window.addEventListener("DOMContentLoaded", () => {
   fetch(`${ENDPOINT}/movie/${id}?api_key=${APIKEY}&language=pt-BR`)
     .then((res) => res.json())
     .then((data) => {
-      let str = "";
-      str += `<h2 class="my-3"> Detalhes </h2>`;
-      str += `<div class="col-12 mb-2">
+      let str = `<div class="col-12 mb-2">
           <h4 class="text-center ">${data.original_title}</h4>
         </div>
         <div class="row">

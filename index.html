@@ -14,35 +14,38 @@
   <title>LissaFlix</title>
 </head>
 <body>
-  <nav class="navbar navbar-expand-xxl navbar-dark bg-dark">
-    <div class="container-fluid">
-      <div class="d-flex">
-        <button class="navbar-toggler me-3" type="button" data-bs-toggle="collapse" data-bs-target="#navCabecalho" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <a class="navbar-brand d-flex align-items-center" href="index.html">
-          <img src="imgs/popcorn_cinema_icon.png" class="img-brand me-2" alt="filmes">
-          LissaFlix
-        </a>
-      </div>        
-      <div class="collapse navbar-collapse" id="navCabecalho">
-        <ul class="navbar-nav mb-2 mb-xxl-0">
-          <li class="nav-item">
-            <a class="nav-link active" href="index.html">Filmes</a>
-          </li>
-        </ul>
-      </div>
-      <div class="my-2 my-xxl-0" style="display: inline-block;">
-        <div class="input-group">          
-          <input id="buscar" class="form-control" type="text" placeholder="Pesquisar filmes" aria-label="Pesquisar">
-          <button id="btn-pesquisa" class="btn btn-secondary"><i class="bi bi-search"></i></button> 
+  <header>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+      <div class="container-fluid">
+        <div class="d-flex">
+          <button class="navbar-toggler me-3" type="button" data-bs-toggle="collapse" data-bs-target="#navCabecalho" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <a class="navbar-brand d-flex align-items-center" href="index.html">
+            <img src="imgs/popcorn_cinema_icon.png" class="img-brand me-2" alt="filmes">
+            LissaFlix
+          </a>
+        </div>        
+        <div class="collapse navbar-collapse" id="navCabecalho">
+          <ul class="navbar-nav mb-2 mb-sm-0">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html">No Cinema</a>
+            </li>
+          </ul>
+        </div>
+        <div class="my-2 my-sm-0" style="display: inline-block;">
+          <div class="input-group">          
+            <input id="buscar" class="form-control" type="text" placeholder="Pesquisar filmes" aria-label="Pesquisar">
+            <button id="btn-pesquisa" class="btn btn-secondary"><i class="bi bi-search"></i></button> 
+          </div>
         </div>
       </div>
-    </div>
-  </nav>
+    </nav>
+  </header>
   <main class="container-fluid my-2">   
     <section class="container">
-      <div class="row" id="filmes-no-cinema"></div>
+      <h2 class="text-center my-3" id="titulo-filmes"></h2>
+      <div class="row" id="filmes"></div>
     </section>
   </main>
   <footer class="container-fluid bg-dark">

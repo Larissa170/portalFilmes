@@ -8,8 +8,9 @@ window.addEventListener("DOMContentLoaded", () => {
   fetch(`${ENDPOINT}/movie/now_playing?api_key=${APIKEY}&language=pt-BR`)
     .then((res) => res.json())
     .then((data) => {
+      document.getElementById("titulo-filmes").innerHTML = "No Cinema";
+
       let str = "";
-      str += `<h2 class="text-center my-3"> No Cinema</h2>`;
       for (x = 0; x < data.results.length; x++) {
         let lancamento = new Date(data.results[x].release_date);
         str += `
@@ -32,7 +33,7 @@ window.addEventListener("DOMContentLoaded", () => {
         </div>`;
       }
 
-      document.getElementById("filmes-no-cinema").innerHTML = str;
+      document.getElementById("filmes").innerHTML = str;
     })
 
     .catch((err) => console.log(`ERRO: ${err.message}`));
@@ -47,8 +48,10 @@ elem.addEventListener("click", () => {
   )
     .then((res) => res.json())
     .then((data) => {
+      document.getElementById("titulo-filmes").innerHTML =
+        "Resultados encontrados";
+
       let str = "";
-      str += `<h2 class="my-3"> Filmes encontrados </h2>`;
       for (x = 0; x < data.results.length; x++) {
         let lancamento = new Date(data.results[x].release_date);
         str += `
@@ -63,7 +66,7 @@ elem.addEventListener("click", () => {
         }" alt="Poster Filme" class="card-img-top mb-1"/>
                 <p><span>Sinopse: </span> ${data.results[x].overview}</p>
                 <p><span>Lançamento: </span> ${lancamento.toLocaleDateString()}</p>                
-                <a class="btn btn-light" href="detalhes.html?id=${
+                <a class="btn btn-light" href="https://www.themoviedb.org/movie/${
                   data.results[x].id
                 }" target="_blank">Detalhes</a> 
               </div>
@@ -71,7 +74,7 @@ elem.addEventListener("click", () => {
         </div>`;
       }
 
-      document.getElementById("filmes-no-cinema").innerHTML = str;
+      document.getElementById("filmes").innerHTML = str;
     })
 
     .catch((err) => console.log(`ERRO: ${err.message}`));
