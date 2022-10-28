@@ -15,8 +15,8 @@ window.addEventListener("DOMContentLoaded", () => {
         let lancamento = new Date(data.results[x].release_date);
         str += `
         <div class="col-sm-4 mb-2">
-          <div class="card bg-dark text-white style="width: 18rem;">
-              <div class="card-body">
+          <div class="card h-100 bg-dark text-white style="width: 18rem;">
+              <div class="card-body d-flex flex-column">
                 <h5 class="card-title text-center ">${
                   data.results[x].original_title
                 }</h5>
@@ -25,7 +25,7 @@ window.addEventListener("DOMContentLoaded", () => {
         }" alt="Poster Filme" class="card-img-top mb-1"/>
                 <p><span>Sinopse: </span> ${data.results[x].overview}</p>
                 <p><span>Lançamento: </span> ${lancamento.toLocaleDateString()}</p>                
-                <a class="btn btn-light" href="detalhes.html?id=${
+                <a class="btn btn-light mt-auto" href="detalhes.html?id=${
                   data.results[x].id
                 }" target="_blank">Detalhes</a> 
               </div>
@@ -39,43 +39,54 @@ window.addEventListener("DOMContentLoaded", () => {
     .catch((err) => console.log(`ERRO: ${err.message}`));
 });
 
+// busca de filmes
+const percorrer = async (data) => {
+  let str = "";
+  for (x = 0; x < data.results.length; x++) {
+    let lancamento = new Date(data.results[x].release_date);
+    let url = `detalhes.html?id=${data.results[x].id}`;
+
+    //tratando o link pois somente vem na api em ingles
+    let response = await fetch(
+      `${ENDPOINT}/movie/${data.results[x].id}?api_key=${APIKEY}`
+    );
+    if (response.ok) {
+      let json = await response.json();
+      url = json.homepage != "" ? json.homepage : url;
+    }
+    //
+
+    str += `
+    <div class="col-sm-4 mb-2">
+      <div class="card h-100 bg-dark text-white style="width: 18rem;">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title text-center ">${
+              data.results[x].original_title
+            }</h5>
+            <img src="${IMGS}${
+      data.results[x].poster_path
+    }" alt="Poster Filme" class="card-img-top mb-1"/>
+            <p><span>Sinopse: </span> ${data.results[x].overview}</p>
+            <p><span>Lançamento: </span> ${lancamento.toLocaleDateString()}</p>
+            <a class="btn btn-light mt-auto" href="${url}" target="_blank">Detalhes</a>  
+          </div>
+        </div>
+    </div>`;
+  }
+  document.getElementById("filmes").innerHTML = str;
+};
+
 const elem = document.getElementById("btn-pesquisa");
 
-elem.addEventListener("click", () => {
+elem.addEventListener("click", async () => {
   let busca = document.getElementById("buscar").value;
-  fetch(
+
+  await fetch(
     `${ENDPOINT}/search/movie?api_key=${APIKEY}&query=${busca}&language=pt-BR`
   )
     .then((res) => res.json())
     .then((data) => {
-      document.getElementById("titulo-filmes").innerHTML =
-        "Resultados encontrados";
-
-      let str = "";
-      for (x = 0; x < data.results.length; x++) {
-        let lancamento = new Date(data.results[x].release_date);
-        str += `
-        <div class="col-sm-4 mb-2">
-          <div class="card bg-dark text-white style="width: 18rem;">
-              <div class="card-body">
-                <h5 class="card-title text-center ">${
-                  data.results[x].original_title
-                }</h5>
-                <img src="${IMGS}${
-          data.results[x].poster_path
-        }" alt="Poster Filme" class="card-img-top mb-1"/>
-                <p><span>Sinopse: </span> ${data.results[x].overview}</p>
-                <p><span>Lançamento: </span> ${lancamento.toLocaleDateString()}</p>                
-                <a class="btn btn-light" href="https://www.themoviedb.org/movie/${
-                  data.results[x].id
-                }" target="_blank">Detalhes</a> 
-              </div>
-            </div>
-        </div>`;
-      }
-
-      document.getElementById("filmes").innerHTML = str;
+      percorrer(data);
     })
-
     .catch((err) => console.log(`ERRO: ${err.message}`));
 });
